@@ -1,0 +1,70 @@
+-- 
+-- Roll No: 03
+-- Name: Akhila
+-- Program:
+-- 
+
+
+--
+-- Table structure for table departments
+--
+create table departments(dno int primary key,dname varchar(50) NOT NULL);
+
+--
+-- Table structure for table bookissues
+--
+create table bookissues(bookid int,studentid int,issue_date date, return_date date,fine decimal(5,2) default 0.00);
+
+--
+-- Table structure for table students
+--
+
+
+alter table students drop column course;
+
+alter table students add column dno int,add constraint students_fkey_departments foreign key (dno) references departments(dno);
+
+--
+-- Table structure for table bookissues
+--
+
+alter table bookissues add constraint bookissues_pk primary key(bookid,
+studentid);
+
+alter table bookissues add constraint bookissues_fkey_students foreign key(studentid) references students(studentid),
+add constraint bookissues_fkey_books foreign key(bookid) references books(bookid);
+
+
+
+
+
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Dumping data for table departments
+--
+insert into departments(dno,dname) values(1, 'MCA');
+
+--
+-- Dumping data for table bookissues
+--
+insert into bookissues(bookid,studentid,issue_date,return_date,fine) values(2, 101, '2025-02-10', NULL, 0.00),(1, 102, '2025-02-12', '2025-02-18', 0.00);
+
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+
+7)SELECT books.title,bookissues.studentid,students.name,departments.dname FROM bookissues JOIN books ON bookissues.bookid = books.bookid JOIN students ON bookissues.studentid = students.studentid JOIN departments ON students.dno = departments.dno;
+
+8)select students.name, students.studentid,departments.dname from students inner join departments on students.dno = departments.dno;
+
+9)select bookissues.studentid, students.name, departments.dname, bookissues.bookid, books.title from bookissues join books on books.bookid = bookissues.bookid join students on students.studentid = bookissues.studentid join
+
+
+departments on students.dno = departments.dno;
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
