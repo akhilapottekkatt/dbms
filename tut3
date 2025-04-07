@@ -1,16 +1,43 @@
+-- 
+-- Roll No: 03
+-- Name: Akhila
+-- Program: Practice
+-- 
+
+--
+-- Table structure for table librarians
+--
+
+
 create table librarians (librarianid int primary key auto_increment,name varchar(50) NOT NULL,email varchar(100) unique NOT NULL,phone varchar(10) unique NOT NULL);
+
+
+
+--
+-- Table structure for table bookissues
+--
+
 
 alter table bookissue add column librarianid int;
 
 alter table bookissue add constraint  bookissue_fkey_librarianid foreign
  key(librarianid) references librarians(librarianid);
 
-insert into   librarians(librarianid,name,email,phone)values(1, 'John Smith', 'john.smith@example.com', '9876543210'),(2, 'Emma Brown', 'emma.brown@example.com',
- '8765432109'),(3, 'David Wilson','david.wilson@example.com', '7654321098'),(4, 'Franklin', 'franklin@example.com', '3445236778');
+
 
 update bookissue set librarianid=1 where bookid in (101,102);
 update bookissue set librarianid=1 where bookid in (103,104);
 update bookissue set librarianid=1 where bookid in (105,106);
+
+--
+-- Dumping data for table librarians
+--
+
+insert into   librarians(librarianid,name,email,phone)values(1, 'John Smith', 'john.smith@example.com', '9876543210'),(2, 'Emma Brown', 'emma.brown@example.com',
+ '8765432109'),(3, 'David Wilson','david.wilson@example.com', '7654321098'),(4, 'Franklin', 'franklin@example.com', '3445236778');
+--
+-- SQl Query Statements
+--
 
 --6.Count the number of books issued by each librarian (include attributes librarianid, name, total_books_issued)
 
