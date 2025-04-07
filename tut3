@@ -12,6 +12,17 @@ update bookissue set librarianid=1 where bookid in (101,102);
 update bookissue set librarianid=1 where bookid in (103,104);
 update bookissue set librarianid=1 where bookid in (105,106);
 
+--6.Count the number of books issued by each librarian (include attributes librarianid, name, total_books_issued)
+
+
+SELECT l.librarianid,l.name,COUNT(b.bookid) AS total_books_issued FROM librarian l LEFT JOIN books_issued b ON l.librarianid = b.librarianid GROUP BY l.librarianid, l.name;
+
+
+
+--7.7. Find librarians who have not issued any books (include attributes librarianid, name)
+
+SELECT librarianid, name FROM librarian LEFT JOIN books_issued b ON l.librarianid = b.librarianid WHERE b.bookid IS NULL;
+
 
 
 
