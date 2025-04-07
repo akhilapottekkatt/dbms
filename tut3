@@ -23,7 +23,9 @@ alter table bookissue add column librarianid int;
 alter table bookissue add constraint  bookissue_fkey_librarianid foreign
  key(librarianid) references librarians(librarianid);
 
-
+--
+-- Dumping data for table bookissue
+--
 
 update bookissue set librarianid=1 where bookid in (101,102);
 update bookissue set librarianid=1 where bookid in (103,104);
@@ -35,6 +37,7 @@ update bookissue set librarianid=1 where bookid in (105,106);
 
 insert into   librarians(librarianid,name,email,phone)values(1, 'John Smith', 'john.smith@example.com', '9876543210'),(2, 'Emma Brown', 'emma.brown@example.com',
  '8765432109'),(3, 'David Wilson','david.wilson@example.com', '7654321098'),(4, 'Franklin', 'franklin@example.com', '3445236778');
+
 --
 -- SQl Query Statements
 --
