@@ -14,3 +14,18 @@ create table issues(issueid int auto_increment primary key,memberid int, accno i
 
 
 create table returns(returnid int auto_increment primary key,memberid int,accno int,returndate date,fine int default 0 check(fine>=0));
+
+INSERT INTO publishers (name, address) VALUES('Pearson Education', 'New Delhi'),('McGraw-Hill', 'Mumbai'),('O\'Reilly Media', 'Bangalore'),
+('Wiley India', 'Chennai'),
+('Oxford University Press', 'Kolkata');
+
+
+
+
+
+INSERT INTO books (title, author, price, type, availability, publisherid) VALUES('C Programming Basics', 'Dennis Ritchie', 45.50, 'lending', 'yes', 1),
+,('Introduction to Java', 'James Gosling', 65.75, 'lending', 'yes', 2),
+('Python for Beginners', 'Guido van Rossum', 59.99, 'reference', 'no', 3),
+('Data Structures', 'Mark Allen Weiss', 85.25, 'lending', 'yes', 4),
+('Web Development', 'Ethan Brown', 75.00, 'reference', 'yes', 5);
+
