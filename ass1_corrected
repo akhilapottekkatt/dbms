@@ -1,7 +1,7 @@
 -- 
--- Roll No: <03>
--- Name: <Akhila.P>
--- Program: <>
+-- Roll No:03
+-- Name: Akhila
+-- Program: Assignment - I
 -- 
 
 
@@ -50,6 +50,12 @@ create table returns(returnid int auto_increment primary key,memberid int,accno 
 insert into books(title, author, price, type, availability, publisherid) VALUES('C Programming Basics', 'Dennis Ritchie', 45.50, 'lending', 'yes', 1),('Introduction to Java', 'James Gosling', 65.75, 'lending', 'yes', 2),('Python for Beginners', 'Guido van Rossum', 59.99, 'reference', 'no', 3),('Data Structures', 'Mark Allen Weiss', 85.25, 'lending', 'yes', 4),('Web Development', 'Ethan Brown', 75.00, 'reference', 'yes', 5);
 
 --
+-- Dumping data for table publishers
+--
+
+INSERT INTO publishers (name, address) VALUES('Pearson Education', 'New Delhi'),('McGraw-Hill', 'Mumbai'),('O\'Reilly Media', 'Bangalore'),('Wiley India', 'Chennai'),('Oxford University Press', 'Kolkata');
+
+--
 -- Dumping data for table members
 --
 
@@ -70,8 +76,3 @@ INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES(1, 1, '2025-04-0
 
 INSERT INTO returns (memberid, accno, returndate, fine) VALUES(1, 1, '2025-04-09', 0),(2, 2, '2025-04-13', 10),(3, 3, '2025-04-14', 0),(4, 4, '2025-04-15', 5),(5, 5, '2025-04-16', 0);
 
---
--- Dumping data for table publishers
---
-
-INSERT INTO publishers (name, address) VALUES('Pearson Education', 'New Delhi'),('McGraw-Hill', 'Mumbai'),('O\'Reilly Media', 'Bangalore'),('Wiley India', 'Chennai'),('Oxford University Press', 'Kolkata');
