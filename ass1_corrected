@@ -1,0 +1,77 @@
+-- 
+-- Roll No: <03>
+-- Name: <Akhila.P>
+-- Program: <>
+-- 
+
+
+--
+-- Table structure for books
+--
+
+create table books(accno int auto_increment primary key,title varchar(100) not null unique,author varchar(50) not null,
+price float(4,2),type enum('lending','reference'),availability
+enum('yes','no'),publisherid int) ;
+
+--
+-- Table structure for publisher
+--
+
+create table publishers(publisherid int auto_increment primary key,name varchar(50) unique not null,address varchar(100));
+
+--
+-- Table structure for members
+--
+
+create table members(memberid int auto_increment primary key,name varchar(50) not null, address varchar(100),type enum('staff','student'));
+
+
+
+--
+-- Table structure for issues
+--
+create table issues(issueid int auto_increment primary key,memberid int, accno int, issuedate date, duedate date);
+
+
+
+
+
+--
+-- Table structure for returns
+--
+
+create table returns(returnid int auto_increment primary key,memberid int,accno int,returndate date,fine int default 0 check(fine>=0));
+
+
+--
+-- Dumping data for table books
+--
+
+insert into books(title, author, price, type, availability, publisherid) VALUES('C Programming Basics', 'Dennis Ritchie', 45.50, 'lending', 'yes', 1),('Introduction to Java', 'James Gosling', 65.75, 'lending', 'yes', 2),('Python for Beginners', 'Guido van Rossum', 59.99, 'reference', 'no', 3),('Data Structures', 'Mark Allen Weiss', 85.25, 'lending', 'yes', 4),('Web Development', 'Ethan Brown', 75.00, 'reference', 'yes', 5);
+
+--
+-- Dumping data for table members
+--
+
+INSERT INTO members(name, address, type) VALUES('Anjali Nair', 'Kochi', 'student'),('Rahul Menon', 'Trivandrum', 'staff'),('Divya Suresh', 'Calicut', 'student'),('Arjun Varma', 'Ernakulam', 'staff'),('Neha Ramesh', 'Kannur', 'student');
+
+--
+-- Dumping data for table issues
+--
+
+
+INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES(1, 1, '2025-04-01', '2025-04-10'),(2, 2, '2025-04-03', '2025-04-13'),(3, 3, '2025-04-05', '2025-04-15'),(4, 4, '2025-04-07', '2025-04-17'),(5, 5, '2025-04-08', '2025-04-18');
+
+
+--
+-- Dumping data for table returns
+--
+
+
+INSERT INTO returns (memberid, accno, returndate, fine) VALUES(1, 1, '2025-04-09', 0),(2, 2, '2025-04-13', 10),(3, 3, '2025-04-14', 0),(4, 4, '2025-04-15', 5),(5, 5, '2025-04-16', 0);
+
+--
+-- Dumping data for table publishers
+--
+
+INSERT INTO publishers (name, address) VALUES('Pearson Education', 'New Delhi'),('McGraw-Hill', 'Mumbai'),('O\'Reilly Media', 'Bangalore'),('Wiley India', 'Chennai'),('Oxford University Press', 'Kolkata');
