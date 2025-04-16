@@ -10,7 +10,7 @@ WHERE title LIKE '%o%';
 
 SELECT *
 FROM books
-WHERE availability = 'yes';  -- Assuming 'yes' or 1 indicates availability
+WHERE availability = 'yes';  
 
 
 
