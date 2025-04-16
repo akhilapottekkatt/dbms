@@ -1,0 +1,110 @@
+SELECT name, address
+FROM members;
+
+
+
+SELECT accno, title
+FROM books
+WHERE title LIKE '%o%';
+
+
+SELECT *
+FROM books
+WHERE availability = 'yes';  -- Assuming 'yes' or 1 indicates availability
+
+
+
+SELECT b.title, b.author, p.name AS publisher_name
+FROM books b
+JOIN publishers p ON b.publisherid = p.publisherid;
+
+
+
+SELECT m.name, m.address, b.title
+FROM members m
+JOIN issues i ON m.memberid = i.memberid
+JOIN books b ON i.accno = b.accno
+ORDER BY b.title ASC;
+
+
+SELECT m.name, COUNT(i.accno) AS TotalBooksIssued
+FROM members m
+JOIN issues i ON m.memberid = i.memberid
+GROUP BY m.name;
+
+
+
+SELECT m.name, m.address
+FROM members m
+LEFT JOIN issues i ON m.memberid = i.memberid
+WHERE i.issueid IS NULL;
+
+
+
+
+SELECT b.title, b.author, COUNT(i.issueid) AS NumberofIssue
+FROM books b
+LEFT JOIN issues i ON b.accno = i.accno
+GROUP BY b.title, b.author;
+
+
+
+
+SELECT m.name, COUNT(i.accno) AS TotalBooksIssued
+FROM members m
+JOIN issues i ON m.memberid = i.memberid
+GROUP BY m.name
+HAVING COUNT(i.accno) > 2;
+
+
+
+SELECT b.title, b.author
+FROM books b
+LEFT JOIN issues i ON b.accno = i.accno
+WHERE i.issueid IS NULL;
+
+
+
+SELECT b.title, b.author, COUNT(i.issueid) AS TotalIssued
+FROM books b
+JOIN issues i ON b.accno = i.accno
+GROUP BY b.title, b.author
+ORDER BY TotalIssued DESC
+LIMIT 5;
+
+
+SELECT b.title, b.author, COUNT(i.issueid) AS TotalIssued
+FROM books b
+JOIN issues i ON b.accno = i.accno
+GROUP BY b.title, b.author
+HAVING COUNT(i.issueid) = (
+    SELECT MAX(IssueCount)
+    FROM (
+        SELECT COUNT(issueid) AS IssueCount
+        FROM issues
+        GROUP BY accno
+    ) AS SubQuery
+);
+
+
+
+SELECT m.name, i.issuedate
+FROM members m
+JOIN issues i ON m.memberid = i.memberid
+WHERE i.issuedate < '2023-06-01';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
