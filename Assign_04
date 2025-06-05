@@ -1,0 +1,53 @@
+Roll No:03
+Name: Akhila
+
+
+
+1)
+db.createCollection("orders")
+
+db.orders.insertOne({order_no:"o1",year:2020, paid:"Y",cost:{price:30,currency:"INR"},items:[{pno:"p1",colors:["blue","black"],quantity:15}],delivery_days:5})
+
+
+db.orders.insertOne({order_no:"o2",year:2020, paid:"Y",cost:{price:13,currency:"DLR"},items:[{pno:["p2"],colors:["white"],quantity:4},{pno:["p3"],colors:["white","black"],quantity:1}],delivery_days:4})
+
+
+db.orders.insertOne({order_no:"o3",year:2018, paid:"N",cost:{price:33,currency:"EUR"},items:[{pno:"p3",colors:["blue","black"],quantity:4}],delivery_days:4})
+
+
+
+db.orders.insertOne({order_no:"o4",year:2017, paid:"Y",cost:{price:17,currency:"INR"},items:[{pno:["p2"],colors:["pink","black"],quantity:14},{pno:["p4"],colors:["white"],quantity:1}],delivery_days:2})
+
+
+
+db.orders.insertOne({order_no:"o5",year:2020, paid:"Y",cost:{price:19,currency:"INR"},items:[{pno:"p1",quantity:15}],delivery_days:3})
+
+2)
+
+db.orders.find({paid:"Y"})
+
+3)
+
+db.orders.find({$and:[{paid:"Y"},{year:{$lt:2019}}]})
+
+4)
+
+db.orders.find({$or:[{paid:"N"},{year:{$lt:2019}}]})
+
+5)
+
+db.orders.find({"cost.currency":"INR"})
+
+
+6)
+
+db.orders.find({$and:[{"cost.price":{$lt:18},"cost.currency":"INR"}]})
+
+
+7)
+
+db.orders.find({"items.pno":"p2"})
+
+8)
+
+db.orders.find({"items.quantity":{$lt:13}})
